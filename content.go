@@ -1,32 +1,14 @@
 package auth
 
 import (
-	//"fmt"
-	//"html/template"
 	"mule/helpers"
 )
-
-//const TEMP_TEMP = "templates/auth/%s.html"
 
 var (
 	mixTem  = helpers.GenTMixer(APPNAME)
 	loginT  = mixTem("frame", "login")
 	SignUpT = mixTem("frame", "signup")
 )
-
-/*
-func mixTem(tmpls ...string) *template.Template {
-	new_list := make([]string, 0)
-	for _, val := range tmpls {
-		new_list = append(new_list, fmt.Sprintf(TEMP_TEMP, val))
-	}
-	t, err := template.New("t").ParseFiles(new_list...)
-	if err == nil {
-		return t
-	}
-	panic(err)
-}
-*/
 
 func LoginPage(d *Data) {
 	if d.R.Method == "POST" {

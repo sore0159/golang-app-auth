@@ -50,14 +50,18 @@ func (d *Data) GoGame() {
 	http.Redirect(d.W, d.R, d.GameURL, http.StatusFound)
 }
 
-func RedirHome(d *Data) {
+var RedirHome = DataWrap(func(d *Data) {
 	http.Redirect(d.W, d.R, d.HomeURL, http.StatusFound)
+})
+
+func RedirMain(w http.ResponseWriter, r *http.Request) {
+	http.Redirect(w, r, "/", http.StatusFound)
 }
 
-func RedirMain(d *Data) {
-	http.Redirect(d.W, d.R, "/", http.StatusFound)
-}
-
-func RedirGame(d *Data) {
-	http.Redirect(d.W, d.R, d.GameURL, http.StatusFound)
+func RedirGame(appName string) func(http.ResponseWriter, *http.Request) {
+	f := DataWrap(func(d *Data) {
+		d.SetGame(appName)
+		http.Redirect(d.W, d.R, d.GameURL, http.StatusFound)
+	})
+	return f
 }

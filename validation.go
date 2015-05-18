@@ -9,7 +9,7 @@ import (
 )
 
 var (
-	reservedNames = []string{"mule", "guest", "login", "logout"}
+	reservedNames = []string{"mule", "guest", "login", "logout", "register"}
 )
 
 func IsValidName(testName string) bool {
