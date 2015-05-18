@@ -1,0 +1,24 @@
+body{ 
+        background-color: black;
+        color: white;
+        font-size: x-large;
+        font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
+        margin: 5% 15% 15% 15%;
+}
+
+input {
+        background-color: black;
+        color: white;
+        font-size: x-large;
+        font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
+       }
+
+input[type="submit"]:hover {
+        background-color: #442222;
+        color: white;
+}
+
+
+a {
+        color:#3399FF;
+       }

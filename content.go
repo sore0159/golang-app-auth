@@ -1,15 +1,20 @@
 package auth
 
 import (
-	"fmt"
-	"html/template"
+	//"fmt"
+	//"html/template"
+	"mule/helpers"
 )
 
-const TEMP_TEMP = "templates/auth/%s.html"
+//const TEMP_TEMP = "templates/auth/%s.html"
 
-var loginT = mixTem("frame", "login")
-var SignUpT = mixTem("frame", "signup")
+var (
+	mixTem  = helpers.GenTMixer(APPNAME)
+	loginT  = mixTem("frame", "login")
+	SignUpT = mixTem("frame", "signup")
+)
 
+/*
 func mixTem(tmpls ...string) *template.Template {
 	new_list := make([]string, 0)
 	for _, val := range tmpls {
@@ -21,6 +26,7 @@ func mixTem(tmpls ...string) *template.Template {
 	}
 	panic(err)
 }
+*/
 
 func LoginPage(d *Data) {
 	if d.R.Method == "POST" {
@@ -36,11 +42,6 @@ func LoginPage(d *Data) {
 	formUser := d.R.FormValue("username")
 	// maybe use session cookie for "last attempted login"
 	d.ExeT(loginT, "frame", formUser)
-	/*err := loginT.ExecuteTemplate(d.W, "frame", formUser)
-	if err != nil {
-		ErrLog(err)
-	}
-	*/
 }
 
 func SignUpPage(d *Data) {
@@ -71,11 +72,6 @@ func SignUpPage(d *Data) {
 	}
 	// maybe use session cookie for "last attempted login"
 	d.ExeT(SignUpT, "frame", pageData)
-	/*err := SignUpT.ExecuteTemplate(d.W, "frame", pageData)
-	if err != nil {
-		ErrLog(err)
-	}
-	*/
 }
 
 func LogoutPage(d *Data) {

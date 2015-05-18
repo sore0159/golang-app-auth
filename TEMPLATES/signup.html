@@ -1,0 +1,17 @@
+
+{{ define "title"}}Registration Page for Mule's Go Projects{{end}}
+{{ define "css"}}main{{end}}
+{{ define "body" }}
+Register<br><br>
+{{if index .AppDat "errors" }}
+ERRORS: {{ index .AppDat "errors" }}<br>
+{{end }}
+<form action="" method="post">
+        Name: &nbsp;&nbsp;&nbsp;&nbsp;<input name="username" type="text" value={{index .AppDat "username"}}><br>
+        Password: <input name="password" type="password" value="{{ index .AppDat "password"}}"><br>
+        <input type="submit" value="Register">
+</form>
+<br><a href="{{.HomeURL}}">Go to the Guest Center</a>
+<br><a href="/login">Login to an Existing Account</a>
+<br><a href="/">Main Page</a>
+{{ end }}
