@@ -2,16 +2,24 @@
 {{ define "title"}}Registration Page for Mule's Go Projects{{end}}
 {{ define "css"}}main{{end}}
 {{ define "body" }}
-Register<br><br>
-{{if index .AppDat "errors" }}
-ERRORS: {{ index .AppDat "errors" }}<br>
-{{end }}
+Register:<br>
+<br>&#8226; Creating an account means that each project will remember you when you are logged in.  This is not necessary to view my projects: browsing as a guest will allow you to use the projects and they will remember you until you close your browser (or midnight).
+<br>&#8226; If I get spammed with accounts or go through some huge reorganization, I will delete all account data.  Account data of people I know is kept in a seperate place, and so will remain.
+<br>&#8226; This site employs extremely amateur security.  Don't use your credit card number for your password (or your user name).
+<br>
+<br>
 <form action="" method="post">
         Name: &nbsp;&nbsp;&nbsp;&nbsp;<input name="username" type="text" value={{index .AppDat "username"}}><br>
         Password: <input name="password" type="password" value="{{ index .AppDat "password"}}"><br>
-        <input type="submit" value="Register">
+{{if index .AppDat "errors" }}
+ERRORS: {{ index .AppDat "errors" }}<br>
+{{end }}
+<br>        <input type="submit" value="Register">
 </form>
-<br><a href="{{.HomeURL}}">Go to the Guest Center</a>
-<br><a href="/login">Login to an Existing Account</a>
-<br><a href="/">Main Page</a>
+<br>
+<br>Account:
+<br>&#8226; <a href="/login">Login</a>
+<br>Other:
+<br>&#8226; <a href="{{.HomeURL}}">Projects</a>
+<br>&#8226; <a href="/">Main Page</a>
 {{ end }}
